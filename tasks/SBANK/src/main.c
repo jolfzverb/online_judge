@@ -30,14 +30,15 @@ int compare_nums(const void * p1, const void * p2){
   return 0;
 }
 
-read(struct num* n, int k){
+void read(struct num* n, int k){
   int i;
   for(i = 0; i < k; i ++){
-    scanf("%d %d %d %d %d %d", &(n->code), &(n->bank), &(n->num1), &(n->num2), &(n->num3), &(n->num4));
+    int e = scanf("%d %d %d %d %d %d", &(n->code), &(n->bank), &(n->num1), &(n->num2), &(n->num3), &(n->num4));
+    if(e == EOF) abort();
     n++;
   }
 }
-p(struct num* n, int k){
+void p(struct num* n, int k){
   int c = 1;
   struct num pn;
   pn = *n++;
@@ -64,11 +65,13 @@ int main(){
   int N;
   int i;
   int k;
-  scanf("%d", &N);
+  int e = scanf("%d", &N);
+  if(e == EOF) return 1;
   struct num * number = malloc(100000*sizeof(struct num));
   for(i = 0; i < N; i++){
 
-    scanf("%d", &k);  // > 0
+    int e = scanf("%d", &k);  // > 0
+    if(e == EOF) return 1;
     read(number, k);
     qsort(number, k, sizeof(struct num), compare_nums);
     p(number, k);

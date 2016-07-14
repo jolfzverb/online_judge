@@ -72,8 +72,10 @@ void print_num(struct num a){
 void process(char*num){
   struct num a;
   indexer(&a, num);
-  if(all_nines(a))
-    return handle_nines(a);
+  if(all_nines(a)){
+    handle_nines(a);
+    return;
+  }
     
   if(increment_needed(a))
     increment(a);
@@ -87,12 +89,13 @@ void process(char*num){
 int main(){
   int N;
   int i;
-  int k;
-  scanf("%d", &N);
+  int e = scanf("%d", &N);
+  if(e == EOF) return 1;
   char * number = malloc(1000004*sizeof(char));
   for(i = 0; i < N; i++){
 
-    scanf("%s", number);  // > 0
+    int e = scanf("%s", number);  // > 0
+    if(e == EOF) return 1;
     process(number);
 
     /*int len = strlen(number);

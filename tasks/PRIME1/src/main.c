@@ -16,13 +16,16 @@ int main() {
   list[3] = 7;
   len = 4;
   max = 9;
-  scanf("%d", &N);
+  int e = scanf("%d", &N);
+  if(e == EOF) return 1;
   for(i = 0; i < N; i++){
     if(i)printf("\n"); 
     //printf("started N cycle, %d %d\n", i, N); 
     int a,b;
-    scanf("%d", &a);
-    scanf("%d", &b);
+    int e = scanf("%d", &a);
+    if(e == EOF) return 1;
+    e = scanf("%d", &b);
+    if(e == EOF) return 1;
     if(b>max){ // generating new numbers
       //printf("started generation, %d %d\n", b, max); 
       for (j = max+2; j <=b; j+=2){

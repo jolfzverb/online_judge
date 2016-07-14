@@ -52,7 +52,7 @@ void transform(char * start){
         break;
     }
   }
-  while(a = pop()){
+  while((a = pop())){
     if(!a)
       break;
     printf("%c",a);
@@ -68,10 +68,12 @@ int main(){
   char * string;
   operators_start = cur = malloc(400*sizeof(char));
   string = malloc(400*sizeof(char));
-  scanf("%d",&N);
+  int e = scanf("%d",&N);
+  if(e == EOF) return 1;
   for (i = 0; i< N; i++){
     cur = operators_start;
-    scanf("%s", string);
+    int e = scanf("%s", string);
+    if(e == EOF) return 1;
     transform(string);
   }
   return 0;

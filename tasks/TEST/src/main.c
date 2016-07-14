@@ -5,8 +5,9 @@
  */
 int main() {
   int number;
-  for(;;) {
-    scanf("%d", &number);
+  for (;;) {
+    int e = scanf("%d", &number);
+    if (e == EOF) return 1;
     if (number == 42)
       break;
     printf("%d\n", number);

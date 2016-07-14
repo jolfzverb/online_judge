@@ -10,7 +10,8 @@ struct lint {
 
 struct lint read_lint(){
   char *s = malloc(128*sizeof(char));
-  scanf("%s", s);
+  int e = scanf("%s", s);
+  if(e == EOF) abort();
   struct lint ret;
   ret.len = strlen(s);
   ret.num = malloc(128*sizeof(int));
@@ -75,6 +76,7 @@ struct lint sum(struct lint a, struct lint b){
   struct lint res;
   res.len = len;
   res.num = tmp;
+  return res;
 }
     
 
@@ -84,10 +86,10 @@ void neg(struct lint a){
     a.num[i] = -a.num[i];
 }
 
-plint(struct lint a){
+void plint(struct lint a){
   int * tmp = a.num;
   int N = a.len;
-  while (!(*tmp++) & --N){}
+  while (!(*tmp++) && --N){}
 
   int i;
   for(i = 0; i < N; i++)
@@ -98,15 +100,15 @@ plint(struct lint a){
 int main(){
   int i;
   
-  char * input;
-  int * klaud;
-  int * nat;
-  int * diff;
+  //char * input;
+  //int * klaud;
+  //int * nat;
+  //int * diff;
   for(i = 0; i < 10; i++){
 
     struct lint a = read_lint();
     struct lint b = read_lint();
-    int tmp = p(a);
+    //int tmp = p(a);
     divby(a);
     divby(b);
     struct lint big = sum(a,b);

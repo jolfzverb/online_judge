@@ -8,7 +8,8 @@ int main(){
   layout = malloc(200*sizeof(int));//i dont think we need this either
   sums = malloc(200*sizeof(int));//we need only one string
   char * str = malloc(200*sizeof(char));
-  scanf("%d",&N);
+  int e = scanf("%d",&N);
+  if(e == EOF) return 1;
   int i,j,k;
   int m,n;
   int max;
@@ -16,13 +17,15 @@ int main(){
     for (j = 0; j < 200; j ++)
       sums[j] = -1;
     sums[0] = 0;
-    scanf("%d",&m);
-    scanf("%d",&n);
+    int e = scanf("%d",&m);
+    if(e == EOF) return 1;
+    e = scanf("%d",&n);
+    if(e == EOF) return 1;
     max = 0;
     for(k = 0; k < n; k++){
-        char a;
       //read one line;
-        scanf("%s", str);
+        int e = scanf("%s", str);
+	if(e == EOF) return 1;
       for(j = 0; j < m; j++){
         switch (str[j]){
           case '0':

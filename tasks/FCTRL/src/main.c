@@ -7,11 +7,13 @@
 int main(){
   int N;
   int i;
-  scanf("%d", &N);
+  int e = scanf("%d", &N);
+  if(e == EOF) return 1;
   for(i = 0; i < N; i++){
 
     int t;
-    scanf("%d", &t);  // > 0
+    int e = scanf("%d", &t);  // > 0
+    if(e == EOF) return 1;
     int sum = 0;
     while(t/5){
       sum+=t/5;
