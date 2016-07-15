@@ -5,10 +5,28 @@ project (online_judge)
 set(CMAKE_C_FLAGS "-Wall -Werror -pedantic -std=c11 -O2")
 set(CMAKE_CXX_FLAGS "-Wall -Werror -pedantic -std=c++11 -O2")
 
-file(GLOB tasks RELATIVE 
-     "${CMAKE_SOURCE_DIR}/tasks" "${CMAKE_SOURCE_DIR}/tasks/*")
-
 add_custom_target(check)
+
+include_directories(${CMAKE_SOURCE_DIR})
+
+file(GLOB lib_test RELATIVE
+     "${CMAKE_SOURCE_DIR}/lib/test" "${CMAKE_SOURCE_DIR}/lib/test/*.cpp")
+file(MAKE_DIRECTORY test)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY test)
+foreach(dir ${lib_test})
+
+  add_executable(test_${dir} ${CMAKE_SOURCE_DIR}/lib/test/${lib_test})
+
+  add_custom_target(test_lib_${dir} ${CMAKE_BINARY_DIR}/${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test_${dir})
+
+  add_dependencies(test_lib_${dir} test_${dir})
+
+  add_dependencies(check test_lib_${dir})
+
+endforeach()
+
+file(GLOB tasks RELATIVE
+     "${CMAKE_SOURCE_DIR}/tasks" "${CMAKE_SOURCE_DIR}/tasks/*")
 file(MAKE_DIRECTORY bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY bin)
 
@@ -21,9 +39,9 @@ foreach(dir ${tasks})
 
     add_executable(${dir} ${c_files} ${cxx_files})
 
-    add_custom_target(check_${dir} 
-        ${CMAKE_SOURCE_DIR}/test.pl 
-	${CMAKE_BINARY_DIR}/${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${dir} 
+    add_custom_target(check_${dir}
+        ${CMAKE_SOURCE_DIR}/test.pl
+	${CMAKE_BINARY_DIR}/${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${dir}
 	${CMAKE_SOURCE_DIR}/tasks/${dir}/test)
 
     add_dependencies(check_${dir} ${dir})
