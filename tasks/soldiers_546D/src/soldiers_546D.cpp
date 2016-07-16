@@ -8,6 +8,10 @@
 #define VAL 1000000007
 
 int main(){
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(NULL);
+  std::cout.tie(NULL);
+
   int T;
   std::cin >> T;
   std::vector<int> val(5000001, 1);
@@ -16,7 +20,6 @@ int main(){
   for(int i = 2; i < 5000001; i++){
     for (int j = 2; j <= i; j++){
       if(i*j > 5000000) break;
-      if(j < i && !(i%j)) continue;
       val[i*j] = val[i] + val[j];
     }
   }
@@ -26,14 +29,12 @@ int main(){
     s+=val[i];
     sum[i] = s;
   }
-  std::vector<int> res(T);
   for (int i = 0; i < T; i++){
     int a;
     int b;
     std::cin >> a >> b;
-    std::cout <<  sum[a] - sum[b] << std::endl;;
+    std::cout <<   sum[a] - sum[b]<< "\n";
   }
-
 
   return 0;
 }
