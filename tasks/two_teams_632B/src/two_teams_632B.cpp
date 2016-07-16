@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "lib/string.cpp"
 
 class world{
   public:
@@ -75,7 +76,7 @@ std::istream & operator >> (std::istream & in, world & w){
 	in >> t;
 	w.p.push_back(t);
     }
-    std::string s;
+    string s;
     in >> s;
     const char * sp = s.c_str();
     for (const char * a = sp; *a; a++){

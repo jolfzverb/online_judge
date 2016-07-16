@@ -3,17 +3,18 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "lib/string.cpp"
 #define VAL 1000000007
 int main(){
   int N;
   std::cin >> N;
-  std::map<std::string, int> d;
+  std::map<string, int> d;
   d["polycarp"]=1;
   int max = 0;
   for (int i = 0; i < N; i++){
-    std::string n;
-    std::string t;
-    std::string o;
+    string n;
+    string t;
+    string o;
     std::cin >> n >> t >>o;
     std::transform(n.begin(), n.end(), n.begin(), ::tolower);
     std::transform(o.begin(), o.end(), o.begin(), ::tolower);

@@ -13,6 +13,8 @@ public:
   string(const string &);
   ~string();
   string & operator = (const string &);
+  bool operator == (const string &) const;
+  bool operator < (const string &) const;
   string & operator += (const string &);
   string operator + (const string &) const;
   char & operator[](size_type) const;
@@ -34,6 +36,26 @@ private:
   static size_type strlen(const char * str);
   static void strcpy(char *, const char *, size_type);
 };
+// TODO: write tests for it
+bool string::operator<(const string &str) const{
+  const char * my = s;
+  const char * other = str.s;
+  while(*my && *other){
+    if(*my != *other)
+      return *my < *other;
+    my++;
+    other++;
+  }
+  return *my < *other;
+}
+// TODO: write tests for it
+bool string::operator==(const string &str) const{
+  if(l!=str.l) return false;
+  for(unsigned int i = 0; i < l; i++){
+    if(s[i]!=str.s[i]) return false;
+  }
+  return true;
+}
 string::size_type string::find(const string & str, string::size_type start) const{
   return find(str.c_str(), start);
 }

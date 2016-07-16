@@ -1,13 +1,14 @@
 #include <iostream>
 #include <list>
+#include "lib/string.cpp"
 
 int main(){
     int N;
     int price;
-    std::list<std::string> l;
+    std::list<string> l;
     std::cin >> N >> price;
     for (int i = 0; i < N; i++){
-	std::string t;
+	string t;
 	std::cin >> t;
 	l.push_front(t);
     }
