@@ -1,6 +1,7 @@
 #include <iostream>
+#include "lib/string.cpp"
 int main(){
-    std::string s;
+    string s;
     std::cin >> s;
     long long count= 0;
     s = "0"+s;

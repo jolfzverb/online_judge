@@ -5,10 +5,11 @@
 #include <sstream>
 #include <algorithm>
 #include <list>
+#include "lib/string.cpp"
 #define VAL 1000000007
 
 int main(){
-  std::string s;
+  string s;
   std::cin >> s;
   int start = 0;
   int end = s.length()-1;

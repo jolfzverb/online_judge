@@ -5,13 +5,14 @@
 #include <sstream>
 #include <algorithm>
 #include <list>
+#include "lib/string.cpp"
 #define VAL 1000000007
 
 int main(){
   int N;
   int K;
   std::cin >> N >> K;
-  std::string s;
+  string s;
   std::cin >> s;
   int max = 0;
   int count = 0;

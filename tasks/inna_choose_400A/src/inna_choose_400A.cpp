@@ -4,13 +4,14 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "lib/string.cpp"
 #define VAL 1000000007
 
 int main(){
   int N;
   std::cin >> N;
   for(int i = 0; i < N; i++){
-    std::string s;
+    string s;
     std::cin >> s;
     int c = 0;
     int b = 0;

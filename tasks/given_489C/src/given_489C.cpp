@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "lib/string.cpp"
 
 
     
@@ -47,7 +48,7 @@ int main(){
       }
     }
   }
-  std::string l = lesser.str();
+  string l = lesser.str();
   std::reverse(l.begin(), l.end());
   std::stringstream greater;
   s = S;

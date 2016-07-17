@@ -5,10 +5,11 @@
 #include <sstream>
 #include <algorithm>
 #include <iomanip>
+#include "lib/string.cpp"
 
 
 int main(){
-  std::string s;
+  string s;
   std::cin >> s;
   int C = 0;
   for(auto a : s){

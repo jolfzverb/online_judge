@@ -3,11 +3,12 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "lib/string.cpp"
 #define VAL 1000000007
 int main(){
   int N;
   std::cin >> N;
-  std::string s;
+  string s;
   std::cin >> s;
   char prev = s[0];
   int count = 1;

@@ -1,3 +1,7 @@
+/* In wierd testing system that I am targeting, use of ANY includes is
+ * forbidden. Thats why this string implementation is in form of cpp file.
+ * And that is why I need string implementation.
+ */
 #ifndef RELEASE
 #include <string>
 #include <istream>
@@ -36,6 +40,10 @@ private:
   static size_type strlen(const char * str);
   static void strcpy(char *, const char *, size_type);
 };
+// TODO: write tests for it
+string operator + (const char * first, const string &second){
+  return string(first)+second;
+}
 // TODO: write tests for it
 bool string::operator<(const string &str) const{
   const char * my = s;

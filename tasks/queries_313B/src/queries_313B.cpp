@@ -5,13 +5,14 @@
 #include <sstream>
 #include <algorithm>
 #include <list>
+#include "lib/string.cpp"
 
 
 
   
 
 int main(){
-  std::string s;
+  string s;
   std::cin >> s;
   std::vector<int> sum(s.length()+1);
   int tmp = 0;

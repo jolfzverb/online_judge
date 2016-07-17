@@ -1,8 +1,9 @@
 #include <string>
 #include <iostream>
+#include "lib/string.cpp"
 int main(){
-  std::string s;
-  std::string d;
+  string s;
+  string d;
   std::cin >> s >> d;
   const char * s_ = s.c_str();
   int si[10];

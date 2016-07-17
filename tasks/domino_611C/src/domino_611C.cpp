@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "lib/string.cpp"
 #define VAL 1000000007
 
 int main(){
@@ -12,7 +13,7 @@ int main(){
   std::cin >> H >> W;
   std::vector<int> f(H*W,0);
   for (int y = 0; y < H; y++){
-    std::string s;
+    string s;
     std::cin >> s;
     for (int x = 0; x < W; x++){
       if(s[x]=='.') f[y*W+x] = 1;

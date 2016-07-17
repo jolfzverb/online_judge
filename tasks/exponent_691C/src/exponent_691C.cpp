@@ -5,10 +5,11 @@
 #include <sstream>
 #include <algorithm>
 #include <list>
+#include "lib/string.cpp"
 #define VAL 1000000007
 
 int main(){
-  std::string s;
+  string s;
   std::cin >> s;
   if(!std::count(s.begin(), s.end(), '.')){
     unsigned int i = 0;
