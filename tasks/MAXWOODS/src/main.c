@@ -76,5 +76,8 @@ int main(){
     }
     printf("%d\n", max);
   }
+  free(layout);
+  free(sums);
+  free(str);
   return 0;
 }

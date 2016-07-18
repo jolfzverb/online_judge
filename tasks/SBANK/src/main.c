@@ -101,5 +101,6 @@ int main(){
     } 
     */
   }
+  free(number);
   return 0;
 }

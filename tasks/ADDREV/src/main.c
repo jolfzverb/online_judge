@@ -57,5 +57,8 @@ int main(){
     } 
     */
   }
+  free(a);
+  free(b);
+  free(t);
   return 0;
 }

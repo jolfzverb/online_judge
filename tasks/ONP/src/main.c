@@ -76,5 +76,7 @@ int main(){
     if(e == EOF) return 1;
     transform(string);
   }
+  free(operators_start);
+  free(string);
   return 0;
 }

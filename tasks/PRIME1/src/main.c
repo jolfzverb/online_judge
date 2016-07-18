@@ -61,5 +61,6 @@ int main() {
       if(*p>=a && *p <=b) printf("%d\n", *p); 
     }
   }
+  free(list);
   return 0;
 }

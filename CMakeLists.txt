@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 2.8)
 
 project (online_judge)
 
-set(CMAKE_C_FLAGS "-Wall -Werror -pedantic -std=c11 -O2")
-set(CMAKE_CXX_FLAGS "-Wall -Werror -pedantic -std=c++11 -O2")
+set(CMAKE_C_FLAGS "-Wall -Werror -pedantic -std=c11 -O2 ${CMAKE_C_FLAGS}")
+set(CMAKE_CXX_FLAGS "-Wall -Werror -pedantic -std=c++11 -O2 ${CMAKE_CXX_FLAGS}")
 
 add_custom_target(check)
 
@@ -11,7 +11,6 @@ include_directories(${CMAKE_SOURCE_DIR})
 
 file(GLOB lib_test RELATIVE
      "${CMAKE_SOURCE_DIR}/lib/test" "${CMAKE_SOURCE_DIR}/lib/test/*.cpp")
-file(MAKE_DIRECTORY test)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY test)
 foreach(dir ${lib_test})
 
@@ -32,7 +31,6 @@ endforeach()
 
 file(GLOB tasks RELATIVE
      "${CMAKE_SOURCE_DIR}/tasks" "${CMAKE_SOURCE_DIR}/tasks/*")
-file(MAKE_DIRECTORY bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY bin)
 
 foreach(dir ${tasks})
