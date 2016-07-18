@@ -2,9 +2,8 @@
 int main(){
   unsigned long long N;
   std::cin >> N;
-  unsigned long long b = 0;
-  while (8*N > 2*b){}
-    
+  //unsigned long long b = 0;
+  //while (8*N > 2*b){}
   return 0;
 }
 /* Local Variables:  */
