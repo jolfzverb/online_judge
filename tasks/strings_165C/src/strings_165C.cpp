@@ -5,11 +5,12 @@
 #include <sstream>
 #include <algorithm>
 #include <list>
+#include "lib/string.cpp"
 #define VAL 1000000007
 
 int main(){
   int K;
-  std::string s;
+  string s;
   std::cin >> K >> s;
   int N = s.length();
   int l0 = 0;//first 0 before first 1

@@ -5,6 +5,7 @@
 #include <sstream>
 #include <algorithm>
 #include <list>
+#include "lib/pair.cpp"
 #define VAL 1000000007
 
 int main(){
@@ -25,7 +26,7 @@ int main(){
     return 0;
   }
   int max = 2;
-  std::list<std::pair<int, int> > l;
+  std::list<pair<int, int> > l;
   int start=0;
   int end=1;
   while(start!=N){
@@ -33,7 +34,7 @@ int main(){
     if(end - start > 1){
       int len = end - start +1;
       max = max > len ? max : len;
-      l.push_back(std::pair<int, int> (start, end));
+      l.push_back(pair<int, int> (start, end));
     }
     start = end++;
   }

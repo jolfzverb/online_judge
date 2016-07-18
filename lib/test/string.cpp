@@ -156,6 +156,30 @@ int main(){
       res = 1;
     }
   }
+  {
+    string s("ololo");
+    string p = "pew" + s;
+    if(std::string("pewololo") != p.str()){
+      std::cerr << "Add const char * and string failed!" << std::endl;
+      res = 1;
+    }
+  }
+  {
+    string s("ololo");
+    string p = "pew" + s;
+    if(! (s < p)){
+      std::cerr << "Less failed!" << std::endl;
+      res = 1;
+    }
+  }
+  {
+    string s("ololo");
+    string p = s;
+    if(! (s == p)){
+      std::cerr << "Compare equal failed!" << std::endl;
+      res = 1;
+    }
+  }
   return res;
 }
 /* Local Variables:  */

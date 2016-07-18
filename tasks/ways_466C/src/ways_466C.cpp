@@ -51,43 +51,6 @@ int main(){
   }
   std::cout << count << std::endl;
 
-  /*
-  std::vector<long long> s(N+1);
-  long long sum = 0;
-  s[0] = 0;
-
-  //  std::cout << std::endl;
-  // [a,b) = s[b] - s[a];
-  std::vector<std::pair<int, long long>> A(N); // a = (b+c)/2
-  auto itA = A.begin();
-  std::vector<std::pair<int, long long>> C(N); // a = (b+c)/2
-  auto itC = C.begin();
-  for (int i = 1; i < N; i++){
-    //    std::cout << i << " " << s[i] - s[0] << " "<< (s[N] - s[i])/2<< " " << s[N] - s[i]<<  " " << (s[i] - s[0])/2 << std::endl;
-    if((s[i] - s[0])*2 == (s[N] - s[i])){
-      *itA++ = std::pair<int, long long>(i, s[i] - s[0]);
-    }
-    if((s[N] - s[i]) && (s[N] - s[i])*2 == (s[i] - s[0])){
-      *itC++ = std::pair<int, long long>(i, s[N] - s[i]);
-    }
-  }
-    for (auto i = A.begin(); i != itA; i++){
-    std::cout << i->first << " A " << i->second << std::endl;
-  }
-  for (auto i = C.begin(); i != itC; i++){
-    std::cout << i->first << " C " << i->second << std::endl;
-    }*/
-  /*
-  int res = 0;
-  int c = std::count_if(A.begin(), itA, [](const std::pair<int, long long> &p) ->bool{return p.second == 0;});
-  //  std::cout << c;
-  res += (c*(c-1))/2;
-  for( auto i = A.begin(); i != itA; i++){
-    if(i->second)
-      res += std::count_if(C.begin(), itC, [i](const std::pair<int, long long> &p) -> bool {return p.first>i->first && p.second == i->second;});
-  }
-  std::cout << res << std::endl;
-  */
 
   return 0;
 }

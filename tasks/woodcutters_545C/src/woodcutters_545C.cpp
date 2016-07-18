@@ -5,17 +5,18 @@
 #include <sstream>
 #include <algorithm>
 #include <iomanip>
+#include "lib/pair.cpp"
 
 
 int main(){
   int N;
   std::cin >> N;
-  std::vector<std::pair<int, int> > xh(N);
+  std::vector<pair<int, int> > xh(N);
   for(int i = 0; i < N; i++){
     int x;
     int h;
     std::cin >> x >> h;
-    xh[i] = std::pair<int, int>(x,h);
+    xh[i] = pair<int, int>(x,h);
   }
   int l_count = 1;
   int l_x = xh[0].first;

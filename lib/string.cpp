@@ -40,11 +40,9 @@ private:
   static size_type strlen(const char * str);
   static void strcpy(char *, const char *, size_type);
 };
-// TODO: write tests for it
 string operator + (const char * first, const string &second){
   return string(first)+second;
 }
-// TODO: write tests for it
 bool string::operator<(const string &str) const{
   const char * my = s;
   const char * other = str.s;
@@ -56,7 +54,6 @@ bool string::operator<(const string &str) const{
   }
   return *my < *other;
 }
-// TODO: write tests for it
 bool string::operator==(const string &str) const{
   if(l!=str.l) return false;
   for(unsigned int i = 0; i < l; i++){

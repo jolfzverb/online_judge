@@ -5,6 +5,7 @@
 #include <sstream>
 #include <algorithm>
 #include <list>
+#include "lib/pair.cpp"
 #define VAL 1000000007
 
 int main(){
@@ -29,19 +30,19 @@ int main(){
     sum -= p[i-1];
     s[i] = sum;
   }
-  std::vector<std::list<std::pair<long long, unsigned int> > > dp(K+1);
-  dp[0].push_back(std::pair<long long,unsigned int>(0,0));
+  std::vector<std::list<pair<long long, unsigned int> > > dp(K+1);
+  dp[0].push_back(pair<long long,unsigned int>(0,0));
   for(unsigned int i = 0; i <= N-M; i++){
     for(int j = 0; j < K; j++){
       if(dp[j].size() == 0) break;
-      std::pair<long long, unsigned int> top = dp[j].front();
+      pair<long long, unsigned int> top = dp[j].front();
       if(top.second > i) break;
-      std::pair<long long,unsigned int> n(top.first+s[i], i+M);
+      pair<long long,unsigned int> n(top.first+s[i], i+M);
       dp[j+1].push_back(n);
       if(dp[j+1].size() > M+1){
-	std::pair<long long, unsigned int> f = dp[j+1].front();
+	pair<long long, unsigned int> f = dp[j+1].front();
 	dp[j+1].pop_front();
-	std::pair<long long, unsigned int> s = dp[j+1].front();
+	pair<long long, unsigned int> s = dp[j+1].front();
 	s.first = s.first > f.first ? s.first : f.first;
 	dp[j+1].front() = s;
       }

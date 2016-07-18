@@ -14,7 +14,7 @@ file(GLOB lib_test RELATIVE
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY test)
 foreach(dir ${lib_test})
 
-  add_executable(test_${dir} ${CMAKE_SOURCE_DIR}/lib/test/${lib_test})
+  add_executable(test_${dir} ${CMAKE_SOURCE_DIR}/lib/test/${dir})
 
   add_custom_target(test_lib_${dir} ${CMAKE_BINARY_DIR}/${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test_${dir})
 
