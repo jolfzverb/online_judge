@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <list>
 #include "lib/string.cpp"
+#include "lib/list.cpp"
 
 
 
@@ -14,8 +15,8 @@
 int main(){
   string s;
   std::cin >> s;
-  std::list<string::size_type> ab;
-  std::list<string::size_type> ba;
+  list<string::size_type> ab;
+  list<string::size_type> ba;
   string::size_type a = 0;
   for(int i = 0; i < 3; i++){
     string::size_type b = s.find("AB",a);

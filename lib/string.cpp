@@ -179,5 +179,6 @@ char & string::operator[](string::size_type i) const{
 
 /* Local Variables:  */
 /* eval: (setq flycheck-clang-language-standard "c++1z") */
+/* eval: (setq flycheck-clang-include-path (list "../../")) */
 /* eval: (flycheck-mode) */
 /* End:              */

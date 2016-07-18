@@ -1,11 +1,12 @@
 #include <iostream>
 #include <list>
 #include "lib/string.cpp"
+#include "lib/list.cpp"
 
 int main(){
     int N;
     int price;
-    std::list<string> l;
+    list<string> l;
     std::cin >> N >> price;
     for (int i = 0; i < N; i++){
 	string t;

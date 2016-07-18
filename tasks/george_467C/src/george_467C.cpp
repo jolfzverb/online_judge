@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <list>
 #include "lib/pair.cpp"
+#include "lib/list.cpp"
 #define VAL 1000000007
 
 int main(){
@@ -30,7 +31,7 @@ int main(){
     sum -= p[i-1];
     s[i] = sum;
   }
-  std::vector<std::list<pair<long long, unsigned int> > > dp(K+1);
+  std::vector<list<pair<long long, unsigned int> > > dp(K+1);
   dp[0].push_back(pair<long long,unsigned int>(0,0));
   for(unsigned int i = 0; i <= N-M; i++){
     for(int j = 0; j < K; j++){

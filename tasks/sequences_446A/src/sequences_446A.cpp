@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <list>
 #include "lib/pair.cpp"
+#include "lib/list.cpp"
 #define VAL 1000000007
 
 int main(){
@@ -26,7 +27,7 @@ int main(){
     return 0;
   }
   int max = 2;
-  std::list<pair<int, int> > l;
+  list<pair<int, int> > l;
   int start=0;
   int end=1;
   while(start!=N){
