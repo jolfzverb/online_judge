@@ -4,14 +4,16 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "lib/vector.cpp"
+#include "lib/algo.cpp"
 #define VAL 1000000007
 
 int main(){
   int N;
   std::cin >> N;
-  std::vector<long long> v(N);
-  std::vector <long long> vsum(N);
-  std::vector<long long> u(N);
+  vector<long long> v(N);
+  vector <long long> vsum(N);
+  vector<long long> u(N);
   long long sum = 0;
   for (int i = 0; i < N; i++){
     int a;
@@ -21,10 +23,10 @@ int main(){
     sum+=a;
     vsum[i] = sum;
   }
-  std::sort(u.begin(), u.end());
+  sort(u.begin(), u.end());
 
   sum = 0;
-  std::vector <long long> usum(N);
+  vector <long long> usum(N);
   for (int i = 0; i < N; i++){
     sum += u[i];
     usum[i] = sum;

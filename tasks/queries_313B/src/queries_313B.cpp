@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <list>
 #include "lib/string.cpp"
+#include "lib/vector.cpp"
 
 
 
@@ -14,7 +15,7 @@
 int main(){
   string s;
   std::cin >> s;
-  std::vector<int> sum(s.length()+1);
+  vector<int> sum(s.length()+1);
   int tmp = 0;
   sum[0] = 0;
   for(unsigned int i = 0; i < s.length()-1; i++){

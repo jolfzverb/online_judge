@@ -5,13 +5,14 @@
 #include <sstream>
 #include <algorithm>
 #include "lib/string.cpp"
+#include "lib/vector.cpp"
 #define VAL 1000000007
 
 int main(){
   int H;
   int W;
   std::cin >> H >> W;
-  std::vector<int> f(H*W,0);
+  vector<int> f(H*W,0);
   for (int y = 0; y < H; y++){
     string s;
     std::cin >> s;
@@ -20,9 +21,9 @@ int main(){
       else f[y*W+x] = 0;
     }
   }
-  std::vector<int> N(H*W, 0); // N[y][x] - number of places in rect (0,0,x,y)
-  std::vector<int> Nx(H*W, 0); //Nx[y][x] - number of horisontal pieces [x-1, x] in (0,y) part of column x
-  std::vector<int> Ny(H*W, 0); // Ny[y][x] - number of vertical pieces [y-1, y] in [0,x] part of row y
+  vector<int> N(H*W, 0); // N[y][x] - number of places in rect (0,0,x,y)
+  vector<int> Nx(H*W, 0); //Nx[y][x] - number of horisontal pieces [x-1, x] in (0,y) part of column x
+  vector<int> Ny(H*W, 0); // Ny[y][x] - number of vertical pieces [y-1, y] in [0,x] part of row y
 
   for(int y = 1; y < H; y++){
     for(int x = 0; x < W; x++){

@@ -4,8 +4,9 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "lib/vector.cpp"
 
-int get(std::vector<int> & c, std::vector<int> & res, int l, int r){
+int get(vector<int> & c, vector<int> & res, int l, int r){
   int N = c.size();
   if(l > r) return 0;
   if(l == r) return 1;
@@ -36,13 +37,13 @@ int get(std::vector<int> & c, std::vector<int> & res, int l, int r){
 int main(){
   int N;
   std::cin >> N;
-  std::vector<int> c(N);
+  vector<int> c(N);
   for (int i = 0; i < N; i++){
     int a;
     std::cin >> a;
     c[i] = a;
   }
-  std::vector<int> res(N*N, -1);
+  vector<int> res(N*N, -1);
   
   std::cout << get(c,res, 0,N-1)  << std::endl;
 

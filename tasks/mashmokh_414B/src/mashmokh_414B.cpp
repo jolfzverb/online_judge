@@ -4,14 +4,15 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "lib/vector.cpp"
 #define VAL 1000000007
 
 int main(){
   int N;
   int K;
   std::cin >> N >> K;
-  std::vector<int> l(N+1,1);
-  std::vector<int> tmp(N+1, 0);
+  vector<int> l(N+1,1);
+  vector<int> tmp(N+1, 0);
   for (int i = 1; i < K; i++){
     for (int j = 1; j <= N; j++){
       for( int k = 1; k <= N/j; k++){
@@ -20,7 +21,7 @@ int main(){
       }
     }
     l = tmp;
-    tmp = std::vector<int>(N+1,0);
+    tmp = vector<int>(N+1,0);
   }
   int sum = 0;
   for(int i = 1; i <= N; i++){

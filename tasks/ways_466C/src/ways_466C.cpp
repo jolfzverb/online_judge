@@ -4,12 +4,13 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "lib/vector.cpp"
 
 
 int main(){
   int N;
   std::cin >> N;
-  std::vector<int> a(N);
+  vector<int> a(N);
   long long sum = 0;
   for (int i = 0; i < N; i++){
     int t;
@@ -23,9 +24,9 @@ int main(){
     return 0;
   }
   long long st = 0;
-  std::vector<int> L(N);
+  vector<int> L(N);
   int countL = 0;
-  std::vector<int> R(N);
+  vector<int> R(N);
   int countR = 0;
   for (int i = 0; i < N-1; i++){
     st+=a[i];

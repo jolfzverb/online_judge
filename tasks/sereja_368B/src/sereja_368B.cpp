@@ -4,14 +4,15 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "lib/vector.cpp"
 #define MAX 100001
 
 int main(){
   int N;
   int M;
   std::cin >> N >> M;
-  std::vector<int> a(N);
-  std::vector<int> count(MAX, 0);
+  vector<int> a(N);
+  vector<int> count(MAX, 0);
   int c = 0;
   for (int i = 0; i < N; i++){
     int tmp;
@@ -21,7 +22,7 @@ int main(){
       c++;
     count[tmp]++;
   }
-  std::vector<int> res(N);
+  vector<int> res(N);
   for (int i = 0; i < N; i++){
     res[i] = c;
     count[a[i]]--;

@@ -5,6 +5,8 @@
 #include <sstream>
 #include <algorithm>
 #include <list>
+#include "lib/vector.cpp"
+#include "lib/algo.cpp"
 #define VAL 1000000007
 
 int main(){
@@ -12,7 +14,7 @@ int main(){
   int M;
   int D;
   std::cin >> N >> M >> D;
-  std::vector<int> a(N*M);
+  vector<int> a(N*M);
   int min = 100000;
   for(int i =0; i < N*M; i++){
     int t;
@@ -20,9 +22,9 @@ int main(){
     a[i] = t;
     min = min > t ? t : min;
   }
-  std::sort(a.begin(), a.end());
+  sort(a.begin(), a.end());
   int sum = 0;
-  std::vector<int> s(N*M);
+  vector<int> s(N*M);
   for (int i = 0; i < N*M; i++){
     a[i] -= min;
     if(a[i]%D){

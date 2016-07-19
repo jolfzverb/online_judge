@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "lib/vector.cpp"
 #define MAX 101
 
 
@@ -7,7 +8,7 @@
 int main(){
   int N;
   std::cin >> N;
-  std::vector<int> sum(N);
+  vector<int> sum(N);
   std::cin >> sum[0];
   for (int i = 1; i < N; i++){
     int a;

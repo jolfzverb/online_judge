@@ -4,11 +4,12 @@
 #include <vector>
 #include <algorithm>
 #include "lib/pair.cpp"
+#include "lib/vector.cpp"
 #define VAL 1000000007
 int main(){
   int N;
   std::cin >> N;
-  std::vector<pair<int, int> > p(N);
+  vector<pair<int, int> > p(N);
   int len = 0;
   int h1 = 0;
   int h2 = 0;

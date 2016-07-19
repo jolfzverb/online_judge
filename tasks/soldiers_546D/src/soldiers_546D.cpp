@@ -5,6 +5,7 @@
 #include <sstream>
 #include <algorithm>
 #include <list>
+#include "lib/vector.cpp"
 #define VAL 1000000007
 
 int main(){
@@ -14,7 +15,7 @@ int main(){
 
   int T;
   std::cin >> T;
-  std::vector<int> val(5000001, 1);
+  vector<int> val(5000001, 1);
   val[0] = 0;
   val[1] = 0;
   for(int i = 2; i < 5000001; i++){
@@ -24,7 +25,7 @@ int main(){
     }
   }
   int s = 0;
-  std::vector<int> sum(5000001, 0);
+  vector<int> sum(5000001, 0);
   for (int i = 0; i < 5000001; i++){
     s+=val[i];
     sum[i] = s;

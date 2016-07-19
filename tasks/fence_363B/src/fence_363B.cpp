@@ -5,6 +5,7 @@
 #include <sstream>
 #include <algorithm>
 #include <iomanip>
+#include "lib/vector.cpp"
 
 
 int main(){
@@ -12,7 +13,7 @@ int main(){
   int K;
   std::cin >> N;
   std::cin >> K;
-  std::vector<int> h(N);
+  vector<int> h(N);
   for (int i = 0; i < N; i++){
     int a;
     std::cin >> a;

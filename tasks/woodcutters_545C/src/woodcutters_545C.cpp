@@ -6,12 +6,13 @@
 #include <algorithm>
 #include <iomanip>
 #include "lib/pair.cpp"
+#include "lib/vector.cpp"
 
 
 int main(){
   int N;
   std::cin >> N;
-  std::vector<pair<int, int> > xh(N);
+  vector<pair<int, int> > xh(N);
   for(int i = 0; i < N; i++){
     int x;
     int h;

@@ -6,20 +6,22 @@
 #include <algorithm>
 #include <list>
 #include "lib/pair.cpp"
+#include "lib/vector.cpp"
+#include "lib/algo.cpp"
 #define VAL 1000000007
 
 int main(){
   int N;
   std::cin >> N;
-  std::vector<pair <int, int> > ab(N);
+  vector<pair <int, int> > ab(N);
   for (int i = 0; i < N; i++){
     int a;
     int b;
     std::cin >> a >> b;
     ab[i] = pair<int, int>(a,b);
   }
-  std::sort(ab.begin(), ab.end(), [](const pair<int, int> & a, const pair<int, int> & b) -> int {return a.first < b.first;});
-  std::vector<int> fired(N);
+  sort(ab.begin(), ab.end(), [](const pair<int, int> & a, const pair<int, int> & b) -> int {return a.first < b.first;});
+  vector<int> fired(N);
   fired[0] = 1;
   auto it = ab.begin();
   for(int i = 1; i < N; i++){

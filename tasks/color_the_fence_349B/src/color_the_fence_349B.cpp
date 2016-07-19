@@ -5,6 +5,7 @@
 #include <sstream>
 #include <algorithm>
 #include <list>
+#include "lib/vector.cpp"
 #define VAL 1000000007
 
 int main(){
@@ -12,7 +13,7 @@ int main(){
   int k;
   int k_vol = 1000000;
   std::cin >> N;
-  std::vector<int> v(10);
+  vector<int> v(10);
   for (int i = 1; i < 10; i ++){
     int t;
     std::cin >> t;
@@ -29,7 +30,7 @@ int main(){
   int count = N / k_vol;
   N = N % k_vol;
   //now we can print count digits of k
-  std::vector<int> add(10);
+  vector<int> add(10);
   for (int i = 9; i > k; i--){
     if(v[i]-k_vol <= N){
       add[i] = N/(v[i]-k_vol);

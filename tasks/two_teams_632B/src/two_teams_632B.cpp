@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "lib/string.cpp"
+#include "lib/vector.cpp"
 
 class world{
   public:
@@ -11,8 +12,8 @@ class world{
 
 
     int n;
-    std::vector<int> p;
-    std::vector<int> a;
+    vector<int> p;
+    vector<int> a;
     long long res;
 
 };

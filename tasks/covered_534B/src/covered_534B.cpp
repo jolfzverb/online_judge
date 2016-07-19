@@ -5,6 +5,7 @@
 #include <sstream>
 #include <algorithm>
 #include <list>
+#include "lib/vector.cpp"
 #define VAL 1000000007
 
 int main(){
@@ -13,7 +14,7 @@ int main(){
   int T;
   int D;
   std::cin >> V1 >> V2 >> T >> D;
-  std::vector<int> s(T);
+  vector<int> s(T);
   s[0]=V1;
   s[T-1] = V2;
   int i = 1;

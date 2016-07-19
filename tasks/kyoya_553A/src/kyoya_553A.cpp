@@ -1,10 +1,11 @@
 #include <iostream>
 #include <vector>
+#include "lib/vector.cpp"
 #define VAL 1000000007
 int main(){
   int K;
   std::cin >>K;
-  std::vector<int> a(K);
+  vector<int> a(K);
   int max=0;
   int sum = 0;
   for(int i = 0; i < K; i++){

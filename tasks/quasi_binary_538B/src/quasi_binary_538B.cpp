@@ -4,12 +4,13 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "lib/vector.cpp"
 
 
 int main(){
   int N;
   std::cin >> N;
-  std::vector<int> n(7,0);
+  vector<int> n(7,0);
   int count = 0;
   int max = 0;
   while(N){

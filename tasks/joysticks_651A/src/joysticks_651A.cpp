@@ -4,13 +4,14 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "lib/vector.cpp"
 #define MAX 200
 
 int main(){
   int a;
   int b;
   std::cin >> a >> b;
-  std::vector<int> r(MAX*MAX, 0);
+  vector<int> r(MAX*MAX, 0);
 
   for (int i = 3; i <= a+b; i++){
     for (int j = 1; j < i; j++){

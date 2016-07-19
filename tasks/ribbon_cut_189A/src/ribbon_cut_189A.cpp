@@ -1,8 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <climits>
+#include "lib/vector.cpp"
 
-int get(std::vector<int>& l, std::vector<int>& cost, int N){
+int get(vector<int>& l, vector<int>& cost, int N){
   if(N<0) return -1;
   //std::cout << N << " " << l[N] << std::endl;
   if(N==0) return 0;
@@ -26,9 +27,9 @@ int get(std::vector<int>& l, std::vector<int>& cost, int N){
 int main(){
   int N;
   std::cin >> N;
-  std::vector<int> cost(3);
+  vector<int> cost(3);
   std::cin >> cost[0] >> cost[1] >> cost[2];
-  std::vector<int> l(N+1,-1);
+  vector<int> l(N+1,-1);
   std::cout << get(l, cost, N) << std::endl;;
   return 0;
 }

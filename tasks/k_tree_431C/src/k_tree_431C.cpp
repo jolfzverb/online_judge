@@ -5,8 +5,9 @@
 #include <sstream>
 #include <algorithm>
 #include "lib/pair.cpp"
+#include "lib/vector.cpp"
 #define VAL 1000000007
-int get(std::vector<pair<int,int> > &l, int K, int D, int N, int inc){
+int get(vector<pair<int,int> > &l, int K, int D, int N, int inc){
   //  std::cout << N << std::endl;
   if(inc){
     if(l[N].second != -1)
@@ -51,7 +52,7 @@ int main(){
   int K;
   int D;
   std::cin >> N >> K >> D;
-  std::vector<pair<int, int> > l(N+1, pair<int, int>(-1,-1));
+  vector<pair<int, int> > l(N+1, pair<int, int>(-1,-1));
   l[0].first = 1;
   l[0].second = 0;
   //  l[1].first = 1;

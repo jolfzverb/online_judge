@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include "lib/vector.cpp"
+#include "lib/algo.cpp"
 class rect{
 public:
   int x1;
@@ -13,7 +15,7 @@ public:
 int main(){
   int N;
   std::cin >> N;
-  std::vector<rect> l;
+  vector<rect> l;
   rect max = {31400, 31400, 0, 0};
   for (int i = 0 ; i < N; i++){
     rect a;
@@ -28,12 +30,12 @@ int main(){
     std::cout << "NO" << std::endl;
     return 0;
   }
-  std::vector<rect> t = l;
+  vector<rect> t = l;
   // search neighbours of each rect
   for(int i = 0; i < N; i++){
     //upper neighbours
     // upper border is in y1, from x1 to x2, so search for
-    std::sort(t.begin(), t.end(), [](const rect &a, const rect &b) -> bool {return a.x1 < b.x1;});
+    sort(t.begin(), t.end(), [](const rect &a, const rect &b) -> bool {return a.x1 < b.x1;});
     int startx = l[i].x1;
     int endx = l[i].x2;
     for (auto & r : t){
@@ -62,7 +64,7 @@ int main(){
     }
         //left neighbours
     // left border is in x1, from y1 to y2, so search for
-    std::sort(t.begin(), t.end(), [](const rect &a, const rect &b) -> bool {return a.y1 < b.y1;});
+    sort(t.begin(), t.end(), [](const rect &a, const rect &b) -> bool {return a.y1 < b.y1;});
     startx = l[i].y1;
     endx = l[i].y2;
     for (auto & r : t){

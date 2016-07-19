@@ -7,6 +7,7 @@
 #include <list>
 #include "lib/pair.cpp"
 #include "lib/list.cpp"
+#include "lib/vector.cpp"
 #define VAL 1000000007
 
 int main(){
@@ -14,7 +15,7 @@ int main(){
   unsigned int M;
   int K;
   std::cin >> N >> M >> K;
-  std::vector<int> p(N);
+  vector<int> p(N);
   for(unsigned int i = 0; i < N; i++){
     int a;
     std::cin >> a;
@@ -24,14 +25,14 @@ int main(){
   for(unsigned int i = 0; i < M; i++){
     sum += p[i];
   }
-  std::vector<long long> s(N-M+1);
+  vector<long long> s(N-M+1);
   s[0] = sum;
   for(unsigned int i = 1; i <= N-M; i++){
     sum += p[i+M-1];
     sum -= p[i-1];
     s[i] = sum;
   }
-  std::vector<list<pair<long long, unsigned int> > > dp(K+1);
+  vector<list<pair<long long, unsigned int> > > dp(K+1);
   dp[0].push_back(pair<long long,unsigned int>(0,0));
   for(unsigned int i = 0; i <= N-M; i++){
     for(int j = 0; j < K; j++){

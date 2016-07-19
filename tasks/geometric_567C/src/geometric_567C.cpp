@@ -3,12 +3,13 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "lib/vector.cpp"
 #define VAL 1000000007
 int main(){
   int N;
   int K;
   std::cin >> N >> K;
-  std::vector<int> a(N);
+  vector<int> a(N);
   for(int i=0; i < N; i++){
     int t;
     std::cin >> t;

@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <iomanip>
 #include "lib/string.cpp"
+#include "lib/vector.cpp"
 
 
 int main(){
@@ -25,8 +26,8 @@ int main(){
       c+=(a=='+' ? 1 : -1);
     }
   }
-  std::vector<long double> r(2*ucount+1, 0);
-  std::vector<long double> l(2*ucount+1, 0);
+  vector<long double> r(2*ucount+1, 0);
+  vector<long double> l(2*ucount+1, 0);
   r[ucount] = 1;
   for( int i = 0; i < ucount; i++){
     for(unsigned int i = 0; i < r.size(); i++){

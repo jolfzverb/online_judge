@@ -4,13 +4,14 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "lib/vector.cpp"
 
 #define VAL 1000000007 
 int main(){
   int T;
   int K;
   std::cin >> T >> K;
-  std::vector<int> l(100001);
+  vector<int> l(100001);
   l[0] = 1;
   for(int i = 1; i < K; i++){
     l[i] = 1;
@@ -21,7 +22,7 @@ int main(){
     //    std::cout << i << " " << l[i].first << " " <<  l[i].second << std::endl;
   }
   int s = 0;
-  std::vector<int> sum(100001);
+  vector<int> sum(100001);
   for (int i = 0; i < 100001; i++){
     s+=l[i];
     s%=VAL;
