@@ -160,8 +160,8 @@ public:
   int operator-(const vector_iterator & other)const {return i-other.i;}
   vector_iterator & operator+=(int p){i+=p; if(i > v->len) i = v->len; return *this;}
   vector_iterator & operator-=(int p){i-=p;  return *this;}
-  vector_iterator operator+(int p){vector_iterator tmp = *this; tmp.i+=p; return tmp;}
-  vector_iterator operator-(int p){vector_iterator tmp = *this; tmp.i-=p;  return tmp;}
+  vector_iterator operator+(int p) const{vector_iterator tmp = *this; tmp.i+=p; return tmp;}
+  vector_iterator operator-(int p) const{vector_iterator tmp = *this; tmp.i-=p;  return tmp;}
   void swap(vector_iterator & other){int t = i; i = other.i; other.i = t;};
 private:
   vector<T> * v;
