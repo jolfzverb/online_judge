@@ -12,23 +12,40 @@ int main(){
   int K;
   string s;
   std::cin >> K >> s;
+
   int N = s.length();
-  int l0 = 0;//first 0 before first 1
-  int l1 = 0;//first 1;
-  int r1 = 0;// l1 plus K ones and points to zero
-  int r0 = 0;// r1 and all the zeroes and points to one
-  while(l1 < N && s[l1]=='0') l1++;
-  r1 = l1;
+  long long left0 = 0;
+  long long left1 = 0;
+  long long right1 = 0;
+  long long right0 = 0;
   int count = 0;
-  while (r1 < N && count < K){
-    if(s[r1]=='1') count ++;
-    r1++;
+  long long sum = 0;
+  if(K==0){
+    long long start = 0;
+    long long end = 0;
+    while(start < N){
+      while(start < N && s[start]=='1') start++;
+      end = start;
+      while(end < N && s[end]=='0') end++;
+      sum += ((end-start)*(end-start+1))/2;
+      start = end;
+    }
+  } else
+  while(right0 < N){
+    while(left1 < N && s[left1]=='0')left1++;
+    while(right1 < N && count < K){
+      if(s[right1]=='1') count++;
+      right1++;
+    }
+    right0 = right1;
+    while(right0 < N && s[right0]=='0') right0++;
+    //    std::cout << left0 << " " << left1 << " " << right1 << " " << right0 << std::endl;
+    if(count == K) sum+=(left1-left0+1ll)*(right0-right1+1ll);
+    left0 = ++left1;
+    count--;
   }
-  r0 = r1;
-  while(r0 < N && s[r0] == '0')r0++;
-  int res = 0;
-  res += (l1 - l0) * (r0-r1);
-  
+  std::cout << sum << std::endl;
+
 
   return 0;
 }
