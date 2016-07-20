@@ -5,6 +5,14 @@
 #ifndef NULL
 #define NULL 0
 #endif
+template<typename It1, typename It2, typename Op>
+It2 transform(It1 first, It1 last, It2 out, Op op){
+  It1 i = first;
+  while(i!=last){
+    *out++=op(*i++);
+  }
+  return out;
+}
 template<typename It>
 class iterator_traits{
 public:

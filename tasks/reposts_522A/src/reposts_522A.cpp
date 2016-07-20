@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include "lib/string.cpp"
+#include "lib/algo.cpp"
 #define VAL 1000000007
 int main(){
   int N;
@@ -16,8 +17,8 @@ int main(){
     string t;
     string o;
     std::cin >> n >> t >>o;
-    std::transform(n.begin(), n.end(), n.begin(), ::tolower);
-    std::transform(o.begin(), o.end(), o.begin(), ::tolower);
+    transform(n.begin(), n.end(), n.begin(), ::tolower);
+    transform(o.begin(), o.end(), o.begin(), ::tolower);
     int res = d[o] +1;
     max = max > res ? max : res;
     d[n] = res;
