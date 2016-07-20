@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <list>
 #include "lib/vector.cpp"
+#include "lib/algo.cpp"
 #define VAL 1000000007
 
 int main(){
@@ -24,7 +25,7 @@ int main(){
     std::cout << "NO"<< std::endl;
     return 0;
   } else {
-    int t = std::count(a.begin(), a.end(), 0);
+    int t = count(a.begin(), a.end(), 0);
     if(t == 1){
       std::cout << "YES"<< std::endl;
       return 0;

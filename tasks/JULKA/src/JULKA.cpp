@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <list>
 #include "lib/string.cpp"
+#include "lib/algo.cpp"
 #define VAL 1000000007
 
 string add(string & first, string & second){
@@ -93,12 +94,12 @@ int main(){
   string b;
   for(int i = 0; i < 10; i++){
     std::cin >> a >> b;
-    std::reverse(a.begin(), a.end());
-    std::reverse(b.begin(), b.end());
+    reverse(a.begin(), a.end());
+    reverse(b.begin(), b.end());
     string sum = add(a,b);
-    std::reverse(sum.begin(), sum.end());
+    reverse(sum.begin(), sum.end());
     string diff = sub(a,b);
-    std::reverse(diff.begin(), diff.end());
+    reverse(diff.begin(), diff.end());
     sum = divide(sum);
     //  std::cout << diff << std::endl;
     diff = divide(diff);

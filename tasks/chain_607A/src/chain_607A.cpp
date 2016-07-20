@@ -37,7 +37,7 @@ int main(){
   /*  for(int i = 0; i < N; i++){
     std::cout << fired[i] << std::endl;
     }*/
-    int res = (N - *std::max_element(fired.begin(), fired.end()));
+    int res = (N - *max_element(fired.begin(), fired.end()));
   std::cout << res << std::endl;
   return 0;
 }

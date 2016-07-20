@@ -5,6 +5,7 @@
 #include <sstream>
 #include <algorithm>
 #include "lib/string.cpp"
+#include "lib/algo.cpp"
 
 
     
@@ -49,7 +50,7 @@ int main(){
     }
   }
   string l = lesser.str();
-  std::reverse(l.begin(), l.end());
+  reverse(l.begin(), l.end());
   std::stringstream greater;
   s = S;
   for(int i = 0; i < M; i++){

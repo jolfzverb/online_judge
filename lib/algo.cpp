@@ -5,15 +5,41 @@
 #ifndef NULL
 #define NULL 0
 #endif
+template<typename It, typename T>
+int count(const It & begin, const It & end, const T& val){
+  int count = 0;
+  for (It i = begin; i != end; i++){
+    if(*i == val) count ++;
+  }
+  return count;
+}
+template<typename It>
+It max_element(const It &begin, const It &end){
+  It max = begin;
+  for(It i = begin; i != end; i++){
+    if(*i > *max) max = i;
+  }
+  return max;
+}
+template<typename It>
+void it_swap(const It & first, const It & second){
+  typename It::value_type temp = *first;
+  *first = *second;
+  *second = temp;
+}
+template<typename It>
+void reverse(It first, It last){
+  while((first != last) &&  (first != --last)){
+    it_swap(first++, last);
+  }
+}
 template<typename It, typename Cmp>
 void sort_sift_up(It* v, int len, int i, Cmp cmp){
   if(!i)
     return;
   int c = (i + 1)/2 - 1;
   if(!cmp(*(v[i]), *(v[c]))){
-    typename It::value_type temp = *(v[c]);
-    *(v[c]) = *(v[i]);
-    *(v[i]) = temp;
+    it_swap(v[i], v[c]);
     sort_sift_up(v,len,c, cmp);
   }
 }
@@ -25,17 +51,13 @@ void sort_sift_down(It* v, int len, int i, Cmp cmp){
   int c2 = (i+1)*2;
   if(c2 == len){
     if(!cmp(*(v[c1]), *(v[i]))){
-      typename It::value_type temp = *(v[c1]);
-      *(v[c1]) = *(v[i]);
-      *(v[i]) = temp;
+      it_swap(v[c1], v[i]);
     }
     return;
   }
   int c = (!cmp(*(v[c1]), *(v[c2]))) ? c1 : c2;
   if(!cmp(*(v[c]), *(v[i]))){
-    typename It::value_type temp = *(v[c]);
-    *(v[c]) = *(v[i]);
-    *(v[i]) = temp;
+    it_swap(v[c], v[i]);
     sort_sift_down(v, len, c, cmp);
   }
 }
@@ -60,9 +82,7 @@ void sort(It begin, It end, Cmp cmp){
   }
   sort_heapify(vec, count, cmp);
   for(int i = count-1; i>0; i--){
-    typename It::value_type temp = *(vec[0]);
-    *(vec[0]) = *(vec[i]);
-    *(vec[i]) = temp;
+    it_swap(vec[0], vec[i]);
     sort_sift_down(vec,i,0, cmp);
   }
   delete[] vec;
@@ -73,9 +93,7 @@ void sort_sift_up(It* v, int len, int i){
     return;
   int c = (i + 1)/2 - 1;
   if(*(v[i]) > *(v[c])){
-    typename It::value_type temp = *(v[c]);
-    *(v[c]) = *(v[i]);
-    *(v[i]) = temp;
+    it_swap(v[i], v[c]);
     sort_sift_up(v,len,c);
   }
 }
@@ -87,17 +105,13 @@ void sort_sift_down(It* v, int len, int i){
   int c2 = (i+1)*2;
   if(c2 == len){
     if(*(v[c1]) > *(v[i])){
-      typename It::value_type temp = *(v[c1]);
-      *(v[c1]) = *(v[i]);
-      *(v[i]) = temp;
+      it_swap(v[i], v[c1]);
     }
     return;
   }
   int c = *(v[c1]) > *(v[c2]) ? c1 : c2;
   if(*(v[c]) > *(v[i])){
-    typename It::value_type temp = *(v[c]);
-    *(v[c]) = *(v[i]);
-    *(v[i]) = temp;
+    it_swap(v[c], v[i]);
     sort_sift_down(v, len, c);
   }
 }
@@ -122,9 +136,7 @@ void sort(It begin, It end){
   }
   sort_heapify(vec, count);
   for(int i = count-1; i>0; i--){
-    typename It::value_type temp = *(vec[0]);
-    *(vec[0]) = *(vec[i]);
-    *(vec[i]) = temp;
+    it_swap(vec[0], vec[i]);
     sort_sift_down(vec,i,0);
   }
   delete[] vec;

@@ -6,12 +6,13 @@
 #include <algorithm>
 #include <list>
 #include "lib/string.cpp"
+#include "lib/algo.cpp"
 #define VAL 1000000007
 
 int main(){
   string s;
   std::cin >> s;
-  if(!std::count(s.begin(), s.end(), '.')){
+  if(!count(s.begin(), s.end(), '.')){
     unsigned int i = 0;
     while(i < s.length() && s[i] == '0') i++;
     if(i == s.length()) std::cout << 0 << std::endl;
