@@ -116,6 +116,13 @@ template<typename T> typename list<T>::iterator list<T>::end(){
 template<typename T>
 class list_iterator{
   public:
+  typedef int difference_type;
+  typedef T value_type;
+  typedef T* pointer;
+  typedef T& reference;
+#ifndef RELEASE
+  typedef std::bidirectional_iterator_tag iterator_category;
+#endif
   list_iterator() : i(NULL) {};
   list_iterator(const list_iterator & other): i(other.i) {};
   list_iterator & operator=(const list_iterator &other){i = other.i; return *this;};

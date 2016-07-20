@@ -5,6 +5,16 @@
 #ifndef NULL
 #define NULL 0
 #endif
+template<typename It>
+class iterator_traits{
+public:
+  typedef typename It::value_type value_type;
+};
+template<typename T>
+class iterator_traits<T*>{
+public:
+  typedef T value_type;
+};
 template<typename It, typename T>
 int count(const It & begin, const It & end, const T& val){
   int count = 0;
@@ -23,7 +33,7 @@ It max_element(const It &begin, const It &end){
 }
 template<typename It>
 void it_swap(const It & first, const It & second){
-  typename It::value_type temp = *first;
+  typename iterator_traits<It>::value_type temp = *first;
   *first = *second;
   *second = temp;
 }

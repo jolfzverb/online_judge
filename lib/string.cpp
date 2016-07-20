@@ -7,47 +7,9 @@
 #include <istream>
 #include <ostream>
 #endif
-
-class string;
-class string_iterator{
-public:
-  typedef int difference_type;
-  typedef char value_type;
-  typedef char* pointer;
-  typedef char& reference;
-#ifndef RELEASE
-  typedef std::random_access_iterator_tag iterator_category;
-#endif
-  string_iterator();
-  string_iterator(const string_iterator &);
-  string_iterator & operator=(const string_iterator &);
-  string_iterator & operator++();
-  string_iterator operator++(int);
-  string_iterator & operator--();
-  string_iterator operator--(int);
-  bool operator==(const string_iterator &other)const;
-  bool operator!=(const string_iterator &other)const;
-  bool operator<(const string_iterator &other)const;
-  bool operator<=(const string_iterator &other)const;
-  bool operator>(const string_iterator &other)const;
-  bool operator>=(const string_iterator &other)const;
-  char & operator*() const;
-  char * operator->() const;
-  int operator-(const string_iterator & other)const;
-  string_iterator & operator+=(int p);
-  string_iterator & operator-=(int p);
-  string_iterator operator+(int p) const;
-  string_iterator operator-(int p) const;
-  void swap(string_iterator & other);
-private:
-  string * v;
-  unsigned int i;
-  string_iterator(string *v, unsigned int i);
-  friend class string;
-};
 class string{
 public:
-  typedef string_iterator iterator;
+  typedef char * iterator;
   typedef unsigned int size_type;
   static const size_type npos = -1;
   string();
@@ -61,8 +23,8 @@ public:
   string operator + (const string &) const;
   char & operator[](size_type) const;
   size_type length() const;
-  iterator begin();
-  iterator end();
+  iterator begin() const;
+  iterator end() const;
   size_type find(const char *, size_type) const;
   size_type find(const string &, size_type) const;
   const char * c_str() const;
@@ -77,7 +39,6 @@ private:
   size_type l;
   static size_type strlen(const char * str);
   static void strcpy(char *, const char *, size_type);
-  friend class string_iterator;
 };
 string operator + (const char * first, const string &second){
   return string(first)+second;
@@ -158,11 +119,11 @@ void string::strcpy(char * dest, const char * src, string::size_type len){
 string::size_type string::length() const{
   return l;
 }
-string::iterator string::begin(){
-  return string::iterator(this, 0);
+string::iterator string::begin() const{
+  return s;
 }
-string::iterator string::end(){
-  return string::iterator(this, l);
+string::iterator string::end() const{
+  return s+l;
 }
 string::string(){
   s = new char[16];
@@ -215,31 +176,6 @@ string  string::operator+(const string & str) const{
 char & string::operator[](string::size_type i) const{
   return s[i];
 }
-
-
-string_iterator::string_iterator() : v(NULL), i(0) {}
-string_iterator::string_iterator(const string_iterator & other): v(other.v), i(other.i) {}
-string_iterator & string_iterator::operator=(const string_iterator &other){v = other.v; i = other.i; return *this;}
-  string_iterator & string_iterator::operator++(){if(i!=v->l) i++; return *this;}//prefix
-  string_iterator string_iterator::operator++(int){string_iterator tmp = *this; if(i!=v->l) i++; return tmp;}//postfix
-  string_iterator & string_iterator::operator--(){if(i) i--; return *this;}//prefix
-  string_iterator string_iterator::operator--(int){string_iterator tmp = *this; if(i) i--; return tmp;}//postfix
-  bool string_iterator::operator==(const string_iterator &other)const {return i==other.i;}
-  bool string_iterator::operator!=(const string_iterator &other)const {return i!=other.i;}
-  bool string_iterator::operator<(const string_iterator &other)const {return i<other.i;}
-  bool string_iterator::operator<=(const string_iterator &other)const {return  i<=other.i;}
-  bool string_iterator::operator>(const string_iterator &other)const {return  i>other.i;}
-  bool string_iterator::operator>=(const string_iterator &other)const {return  i>=other.i;}
-  char & string_iterator::operator*() const{return (v->s)[i];}
-  char * string_iterator::operator->() const{return (v->s)+i;}
-  int string_iterator::operator-(const string_iterator & other)const {return i-other.i;}
-  string_iterator & string_iterator::operator+=(int p){i+=p; if(i > v->l) i = v->l; return *this;}
-  string_iterator & string_iterator::operator-=(int p){i-=p;  return *this;}
-  string_iterator string_iterator::operator+(int p) const{string_iterator tmp = *this; tmp.i+=p; return tmp;}
-  string_iterator string_iterator::operator-(int p) const{string_iterator tmp = *this; tmp.i-=p;  return tmp;}
-  void string_iterator::swap(string_iterator & other){int t = i; i = other.i; other.i = t;}
-
-string_iterator::string_iterator(string *v, string::size_type i): v(v), i(i) {}
 
 /* Local Variables:  */
 /* eval: (setq flycheck-clang-language-standard "c++1z") */
