@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 2.8)
 
 project (online_judge)
 
-set(CMAKE_C_FLAGS "-Wall -Werror -pedantic -std=c11 -O2 ${CMAKE_C_FLAGS}")
-set(CMAKE_CXX_FLAGS "-Wall -Werror -pedantic -std=c++11 -O2 ${CMAKE_CXX_FLAGS}")
+set(CMAKE_C_FLAGS "-Wall -Werror -pedantic -std=c11 -O2 -fsanitize=address ${CMAKE_C_FLAGS}")
+set(CMAKE_CXX_FLAGS "-Wall -Werror -pedantic -std=c++11 -O2 -fsanitize=address ${CMAKE_CXX_FLAGS}")
 
 add_custom_target(check)
 
