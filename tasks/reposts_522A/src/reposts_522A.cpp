@@ -5,11 +5,12 @@
 #include <algorithm>
 #include "lib/string.cpp"
 #include "lib/algo.cpp"
+#include "lib/map.cpp"
 #define VAL 1000000007
 int main(){
   int N;
   std::cin >> N;
-  std::map<string, int> d;
+  map<string, int> d;
   d["polycarp"]=1;
   int max = 0;
   for (int i = 0; i < N; i++){
