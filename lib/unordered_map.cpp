@@ -36,8 +36,9 @@ public:
   iterator erase(const key_type&);
   T & operator[](const Key&);
   iterator find(const Key &);
-  float max_load_factor() const;
-  void max_load_factor(float);
+  double max_load_factor() const;
+  void max_load_factor(double);
+  void rehash(size_type);
   void dump();
 private:
   size_type bucket_count;
@@ -49,8 +50,59 @@ private:
   friend class unordered_map_iterator<Key, T, Hash, KeyEqual>;
 };
 template<class Key, class T, class Hash, class KeyEqual>
+void unordered_map<Key, T, Hash, KeyEqual>::dump(){
+}
+template<class Key, class T, class Hash, class KeyEqual>
+void unordered_map<Key, T, Hash, KeyEqual>::rehash(size_type b){
+  if(bucket_count == b) return;
+  //this is quite nasty, but should work
+  std::vector<std::list<std::pair<key_type, value_type> > > from = buckets;
+  clear();
+  buckets.resize(b);
+  bucket_count = b;
+  for(typename std::vector<std::list<std::pair<key_type, value_type> > >::iterator i = from.begin(); i!= from.end(); ++i){
+    for(typename std::list<std::pair<key_type,value_type> >::iterator j = i->begin(); j!= i->end(); ++j){
+      insert(*j);
+    }
+  }
+}
+template<class Key, class T, class Hash, class KeyEqual>
+void unordered_map<Key, T, Hash, KeyEqual>::max_load_factor(double m){
+  mlf = m;
+  rehash(bucket_count);
+}
+template<class Key, class T, class Hash, class KeyEqual>
+double unordered_map<Key, T, Hash, KeyEqual>::max_load_factor() const{
+  return mlf;
+}
+template<class Key, class T, class Hash, class KeyEqual>
+typename unordered_map<Key, T, Hash, KeyEqual>::iterator unordered_map<Key, T, Hash, KeyEqual>::find(const key_type& k){
+  size_type b = h(k) % bucket_count;
+  typename std::list<std::pair<key_type, value_type> >::iterator it;
+  for(it = buckets[b].begin(); it!= buckets[b].end(); ++it){
+    if(e(it->first, k)) return iterator(this, b, it);
+  }
+  return end();
+}
+template<class Key, class T, class Hash, class KeyEqual>
+T& unordered_map<Key, T, Hash, KeyEqual>::operator[](const key_type& k){
+  iterator it = find(k);
+  if(it == end()){
+    it = insert(k, T());
+  }
+  return it->second;
+}
+template<class Key, class T, class Hash, class KeyEqual>
+typename unordered_map<Key, T, Hash, KeyEqual>::iterator unordered_map<Key, T, Hash, KeyEqual>::erase(const key_type& k){
+  return erase(find(k));
+}
+template<class Key, class T, class Hash, class KeyEqual>
 typename unordered_map<Key, T, Hash, KeyEqual>::iterator unordered_map<Key, T, Hash, KeyEqual>::erase(const iterator pos){
-  
+  iterator res = pos;
+  ++res;
+  element_count--;
+  buckets[pos.i].erase(pos.it);
+  return res;
 }
 template<class Key, class T, class Hash, class KeyEqual>
 std::pair<typename unordered_map<Key, T, Hash, KeyEqual>::iterator, bool> unordered_map<Key, T, Hash, KeyEqual>::insert(const value_type& val){
@@ -59,15 +111,22 @@ std::pair<typename unordered_map<Key, T, Hash, KeyEqual>::iterator, bool> unorde
     if(e(it->first, val->first))
       return std::pair<iterator, bool>(iterator(this, bucket, it), false);
   }
+  element_count++;
   buckets[bucket].push_back(val);
-  typename std::list<std::pair<key_type, value_type> >::iterator it = buckets[bucket].end();
-  return std::pair<iterator, bool>(iterator(this, bucket, --it), true);
+  if(double(element_count)/double(bucket_count) > mlf){
+    rehash(2*bucket_count);
+    return std::pair<iterator, bool>(find(val.first),true);
+  } else {
+    typename std::list<std::pair<key_type, value_type> >::iterator it = buckets[bucket].end();
+    return std::pair<iterator, bool>(iterator(this, bucket, --it), true);
+  }
 }
 template<class Key, class T, class Hash, class KeyEqual>
 void unordered_map<Key, T, Hash, KeyEqual>::clear(){
   for(size_type i = 0; i < bucket_count; i++){
     buckets[i].clear();
   }
+  element_count = 0;
 }
 template<class Key, class T, class Hash, class KeyEqual>
 typename unordered_map<Key, T, Hash, KeyEqual>::size_type unordered_map<Key, T, Hash, KeyEqual>::size() const{
@@ -128,7 +187,11 @@ class unordered_map_iterator{
 private:
   unordered_map_iterator(unordered_map<Key, T, Hash, KeyEqual> *, typename unordered_map<Key, T, Hash, KeyEqual>::size_type, typename std::list<std::pair<Key, T> >::iterator);
   friend class unordered_map<Key, T, Hash, KeyEqual>;
+  unordered_map<Key, T, Hash, KeyEqual> *m;
+  typename unordered_map<Key, T, Hash, KeyEqual>::size_type i;
+  typename std::list<std::pair<Key, T> >::iterator it;
 };
+
 
 /* Local Variables:  */
 /* eval: (setq flycheck-clang-language-standard "c++1z") */
