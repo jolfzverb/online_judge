@@ -22,7 +22,7 @@ public:
   typedef const value_type* const_pointer;
   typedef unordered_map_iterator<Key, T, Hash, KeyEqual> iterator;
 
-  unordered_map(size_type c=1<<7, const Hash& h = Hash(), const KeyEqual& e = KeyEqual());
+  unordered_map(size_type c = 1<<7, const Hash& h = Hash(), const KeyEqual& e = KeyEqual());
   unordered_map(const unordered_map&);
   ~unordered_map();
   unordered_map & operator=(const unordered_map&);
@@ -32,7 +32,7 @@ public:
   size_type size() const;
   void clear();
   std::pair<iterator, bool> insert(const value_type&);
-  iterator erase(const iterator pos);
+  iterator erase(const iterator);
   iterator erase(const key_type&);
   T & operator[](const Key&);
   iterator find(const Key &);
@@ -191,7 +191,88 @@ private:
   typename unordered_map<Key, T, Hash, KeyEqual>::size_type i;
   typename std::list<std::pair<Key, T> >::iterator it;
 };
-
+template<class Key, class T, class Hash, class KeyEqual>
+unordered_map_iterator<Key,T,Hash,KeyEqual>::unordered_map_iterator(unordered_map<Key, T, Hash, KeyEqual> * m, typename unordered_map<Key, T, Hash, KeyEqual>::size_type i, typename std::list<std::pair<Key, T> >::iterator it): m(m), i(i), it(it) {}
+template<class Key, class T, class Hash, class KeyEqual>
+typename unordered_map_iterator<Key, T, Hash, KeyEqual>::value_type* unordered_map_iterator<Key,T,Hash,KeyEqual>::operator->() const{
+  return it;
+}
+template<class Key, class T, class Hash, class KeyEqual>
+typename unordered_map_iterator<Key, T, Hash, KeyEqual>::value_type& unordered_map_iterator<Key,T,Hash,KeyEqual>::operator*() const{
+  return *it;
+}
+template<class Key, class T, class Hash, class KeyEqual>
+bool unordered_map_iterator<Key,T,Hash,KeyEqual>::operator!=(const unordered_map_iterator & other) const{
+  return !(other.m==m && other.i==i && other.it==it);
+}
+template<class Key, class T, class Hash, class KeyEqual>
+bool unordered_map_iterator<Key,T,Hash,KeyEqual>::operator==(const unordered_map_iterator & other) const{
+  return (other.m==m && other.i==i && other.it==it);
+}
+template<class Key, class T, class Hash, class KeyEqual>
+unordered_map_iterator<Key,T,Hash,KeyEqual> unordered_map_iterator<Key,T,Hash,KeyEqual>::operator--(int){
+  unordered_map_iterator tmp = *this;
+  while(it == m->buckets[i].begin()){
+    if(i > 0){
+      i--;
+      it = m->buckets[i].end();
+    }else{
+      break;
+    }
+  }
+  if (it == m->buckets[i].end() && it != m->buckets[0].begin()){
+    it--;
+  }
+  return tmp;
+}
+template<class Key, class T, class Hash, class KeyEqual>
+unordered_map_iterator<Key,T,Hash,KeyEqual> & unordered_map_iterator<Key,T,Hash,KeyEqual>::operator--(){
+  while(it == m->buckets[i].begin()){
+    if(i > 0){
+      i--;
+      it = m->buckets[i].end();
+    }else{
+      break;
+    }
+  }
+  if (it == m->buckets[i].end() && it != m->buckets[0].begin()){
+    it--;
+  }
+  return *this;
+}
+template<class Key, class T, class Hash, class KeyEqual>
+unordered_map_iterator<Key,T,Hash,KeyEqual> unordered_map_iterator<Key,T,Hash,KeyEqual>::operator++(int){
+  unordered_map_iterator tmp = *this;
+  ++it;
+  while(it == m->buckets[i].end()){
+    if(i < m->bucket_count){
+      i++;
+      it = m->buckets[i].begin();
+    }
+  }
+  return tmp;
+}
+template<class Key, class T, class Hash, class KeyEqual>
+unordered_map_iterator<Key,T,Hash,KeyEqual> & unordered_map_iterator<Key,T,Hash,KeyEqual>::operator++(){
+  ++it;
+  while(it == m->buckets[i].end()){
+    if(i < m->bucket_count){
+      i++;
+      it = m->buckets[i].begin();
+    }
+  }
+  return *this;
+}
+template<class Key, class T, class Hash, class KeyEqual>
+unordered_map_iterator<Key,T,Hash,KeyEqual> & unordered_map_iterator<Key,T,Hash,KeyEqual>::operator=(const unordered_map_iterator & other){
+  m = other.m;
+  i = other.i;
+  it = other.it;
+}
+template<class Key, class T, class Hash, class KeyEqual>
+unordered_map_iterator<Key,T,Hash,KeyEqual>::unordered_map_iterator(const unordered_map_iterator & other): m(other.m), i(other.i), it(other.i) {}
+template<class Key, class T, class Hash, class KeyEqual>
+unordered_map_iterator<Key,T,Hash,KeyEqual>::unordered_map_iterator(): m(NULL), i(), it() {}
 
 /* Local Variables:  */
 /* eval: (setq flycheck-clang-language-standard "c++1z") */
