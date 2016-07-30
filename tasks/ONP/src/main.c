@@ -69,14 +69,18 @@ int main(){
   operators_start = cur = malloc(400*sizeof(char));
   string = malloc(400*sizeof(char));
   int e = scanf("%d",&N);
-  if(e == EOF) return 1;
+  if(e == EOF) goto error_exit;
   for (i = 0; i< N; i++){
     cur = operators_start;
     int e = scanf("%s", string);
-    if(e == EOF) return 1;
+    if(e == EOF) goto error_exit;
     transform(string);
   }
   free(operators_start);
   free(string);
   return 0;
+error_exit:
+  free(operators_start);
+  free(string);
+  return 1;
 }

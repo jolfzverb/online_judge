@@ -23,42 +23,26 @@ int main(){
   for(i = 0; i < N; i++){
 
     int e = scanf("%s", t);  // > 0
-    if (e == EOF) return 1;
+    if (e == EOF) goto error_exit;
     reverse(a,t);
     int a1 = atoi(a);
     e = scanf("%s", t);  // > 0
-    if (e == EOF) return 1;
+    if (e == EOF) goto error_exit;
     reverse(b,t);
     int b1 = atoi(b);
     snprintf(t, 30, "%d", a1+b1);
     reverse(a,t);
     printf("%d\n",atoi(a));
 
-    /*int len = strlen(number);
-
-    if (len%2) {
-      if(number[len / 2 - 1] <= number[len / 2 + 1]){
-        number[len/2]++;
-      }
-      for(k = 0; k < len/2+1; k++){
-        printf("%c", number[k]);
-      }
-      for(k = len/2-1; k >=0; k--){
-        printf("%c", number[k]);
-      }
-    } else {
-      if(number[len/2-1] <= number[len/2])
-        number[len/2-1]++;
-      for (k = 0; k < len/2; k++)
-        printf("%c", number[k]);
-      for(k = len/2-1; k>=0; k--)
-        printf("%c", number[k]);
-
-    } 
-    */
   }
   free(a);
   free(b);
   free(t);
   return 0;
+
+error_exit:
+  free(a);
+  free(b);
+  free(t);
+  return 1;
 }

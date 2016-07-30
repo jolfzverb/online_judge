@@ -90,12 +90,12 @@ int main(){
   int N;
   int i;
   int e = scanf("%d", &N);
-  if(e == EOF) return 1;
   char * number = malloc(1000004*sizeof(char));
+  if(e == EOF) goto error_exit;
   for(i = 0; i < N; i++){
 
     int e = scanf("%s", number);  // > 0
-    if(e == EOF) return 1;
+    if(e == EOF) goto error_exit;
     process(number);
 
     /*int len = strlen(number);
@@ -123,4 +123,7 @@ int main(){
   }
   free(number);
   return 0;
+error_exit:
+  free(number);
+  return 1;
 }

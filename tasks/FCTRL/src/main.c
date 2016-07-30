@@ -21,28 +21,6 @@ int main(){
     }
     printf("%d\n",sum);
 
-    /*int len = strlen(number);
-
-    if (len%2) {
-      if(number[len / 2 - 1] <= number[len / 2 + 1]){
-        number[len/2]++;
-      }
-      for(k = 0; k < len/2+1; k++){
-        printf("%c", number[k]);
-      }
-      for(k = len/2-1; k >=0; k--){
-        printf("%c", number[k]);
-      }
-    } else {
-      if(number[len/2-1] <= number[len/2])
-        number[len/2-1]++;
-      for (k = 0; k < len/2; k++)
-        printf("%c", number[k]);
-      for(k = len/2-1; k>=0; k--)
-        printf("%c", number[k]);
-
-    } 
-    */
   }
   return 0;
 }

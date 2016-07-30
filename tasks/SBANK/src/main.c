@@ -71,7 +71,7 @@ int main(){
   for(i = 0; i < N; i++){
 
     int e = scanf("%d", &k);  // > 0
-    if(e == EOF) return 1;
+    if(e == EOF) goto error_exit;
     read(number, k);
     qsort(number, k, sizeof(struct num), compare_nums);
     p(number, k);
@@ -103,4 +103,7 @@ int main(){
   }
   free(number);
   return 0;
+error_exit:
+  free(number);
+  return 1;
 }

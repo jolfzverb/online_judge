@@ -17,15 +17,15 @@ int main() {
   len = 4;
   max = 9;
   int e = scanf("%d", &N);
-  if(e == EOF) return 1;
+  if(e == EOF) goto error_exit;
   for(i = 0; i < N; i++){
     if(i)printf("\n"); 
     //printf("started N cycle, %d %d\n", i, N); 
     int a,b;
     int e = scanf("%d", &a);
-    if(e == EOF) return 1;
+    if(e == EOF) goto error_exit;
     e = scanf("%d", &b);
-    if(e == EOF) return 1;
+    if(e == EOF) goto error_exit;
     if(b>max){ // generating new numbers
       //printf("started generation, %d %d\n", b, max); 
       for (j = max+2; j <=b; j+=2){
@@ -63,4 +63,7 @@ int main() {
   }
   free(list);
   return 0;
+error_exit:
+  free(list);
+  return 1;
 }

@@ -9,7 +9,7 @@ int main(){
   sums = malloc(200*sizeof(int));//we need only one string
   char * str = malloc(200*sizeof(char));
   int e = scanf("%d",&N);
-  if(e == EOF) return 1;
+  if(e == EOF) goto error_exit;
   int i,j,k;
   int m,n;
   int max;
@@ -18,14 +18,14 @@ int main(){
       sums[j] = -1;
     sums[0] = 0;
     int e = scanf("%d",&m);
-    if(e == EOF) return 1;
+    if(e == EOF) goto error_exit;
     e = scanf("%d",&n);
-    if(e == EOF) return 1;
+    if(e == EOF) goto error_exit;
     max = 0;
     for(k = 0; k < n; k++){
       //read one line;
         int e = scanf("%s", str);
-	if(e == EOF) return 1;
+	if(e == EOF) goto error_exit;
       for(j = 0; j < m; j++){
         switch (str[j]){
           case '0':
@@ -80,4 +80,9 @@ int main(){
   free(sums);
   free(str);
   return 0;
+error_exit:
+  free(layout);
+  free(sums);
+  free(str);
+  return 1;
 }

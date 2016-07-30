@@ -35,7 +35,7 @@ int main(){
     }
     k++;
   }
-  if((1ull<<(k-1))==N+1) result.insert(N+1);
+  if(k > 0 && (1ull<<(k-1))==N+1) result.insert(N+1);
   if(result.empty()) std::cout << -1 << std::endl;
   for(ull i : result){
     std::cout << i << std::endl;
