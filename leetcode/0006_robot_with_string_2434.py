@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/using-a-robot-to-print-the-lexicographically-smallest-string/
 
+
 class Solution(object):
     def robotWithString(self, s):
         smallest_index = len(s) - 1

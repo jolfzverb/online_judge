@@ -1,4 +1,4 @@
-/* https://leetcode.com/problems/using-a-robot-to-print-the-lexicographically-smallest-string/description/
+/* https://leetcode.com/problems/using-a-robot-to-print-the-lexicographically-smallest-string
  */
 class Solution {
   fun robotWithString(str: String): String {

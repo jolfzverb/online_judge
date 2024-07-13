@@ -1,4 +1,4 @@
-/* https://leetcode.com/problems/using-a-robot-to-print-the-lexicographically-smallest-string/description/
+/* https://leetcode.com/problems/using-a-robot-to-print-the-lexicographically-smallest-string
  */
 package task_2434
 
