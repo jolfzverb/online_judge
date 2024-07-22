@@ -1,3 +1,5 @@
+/* https://coderun.yandex.ru/problem/speleologist-way */
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -19,23 +21,22 @@ public class Main {
     Set<Integer> s = new HashSet<>();
 
     for (int i = 0; i < n; i++) {
-      String tmp = reader.readLine();
-      writer.write(tmp);
+      reader.readLine();
 
       for (int j = 0; j < n; j++) {
-        String[] line = reader.readLine().split("");
+        char[] line = reader.readLine().toCharArray();
 
         for (int k = 0; k < n; k++) {
           int index = i * n2 + j * n + k;
 
           switch (line[k]) {
-            case "#":
+            case '#':
               cave[index] = -1;
               break;
-            case ".":
+            case '.':
               cave[index] = 0;
               break;
-            case "S":
+            case 'S':
               cave[index] = 0;
               s.add(index);
               break;
